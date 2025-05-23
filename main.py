@@ -51,14 +51,11 @@ while True:
         break
 
     boat.clear()
-    moved = 0
-    for animal in starting_side:
-        if moved < 2:
-            boat.append(animal)
-            moved += 1
-    for animal in boat:
-        starting_side.remove(animal)
+    boat = starting_side[:2]
+    del starting_side[:2]
+        
     boat_location = "end"
+
     ending_side.extend(boat)
     boat.clear()
 
