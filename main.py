@@ -59,8 +59,10 @@ while True:
     for animal in boat:
         starting_side.remove(animal)
     boat_location = "end"
+    ending_side.extend(boat)
+    boat.clear()
 
-    if starting_side:
+    if starting_side and ending_side:
         return_animal = ending_side.pop()
         starting_side.append(return_animal)
         boat_location = "start"
