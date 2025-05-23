@@ -1,5 +1,3 @@
-print("Test")
-
 # inputs for number of wolves and sheep
 n = int(input("Wolves: ")) # number of wolves
 m = int(input("Sheep: ")) # number of sheep
@@ -53,15 +51,20 @@ while True:
     boat.clear()
     boat = starting_side[:2]
     del starting_side[:2]
-        
+
     boat_location = "end"
 
     ending_side.extend(boat)
     boat.clear()
 
-    if starting_side and ending_side:
-        return_animal = ending_side.pop()
-        starting_side.append(return_animal)
-        boat_location = "start"
+    if starting_side:
+        boat_location = "end"
+        boat.append(ending_side.pop())
+        if ending_side and not is_safe(ending_side):
+            ending_side.append(boat.pop())
+        else:
+            boat_location = "start"
+            starting_side.extend(boat)
+            boat.clear()
     
     steps += 1
